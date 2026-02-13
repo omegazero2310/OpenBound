@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using OpenBound_Network_Object_Library.Session;
-using SharpDX.X3DAudio;
 using System;
 using System.Diagnostics;
 using System.Reflection;

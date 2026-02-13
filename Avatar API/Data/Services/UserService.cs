@@ -7,7 +7,6 @@ using System.Collections.Generic;
 using System.Data.Odbc;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Windows.Forms.VisualStyles;
 
 namespace Avatar_API.Data.Services
 {

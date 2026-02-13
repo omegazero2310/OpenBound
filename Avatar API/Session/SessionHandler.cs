@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using OpenBound_Network_Object_Library.Session;
-using SharpDX.XInput;
 
 namespace Avatar_API.Session
 {
