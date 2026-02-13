@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBound Lobby Server", "O
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBound Login Server", "OpenBound Login Server\OpenBound Login Server.csproj", "{4E10D7BB-8157-4795-88A4-CEE3DD7366EF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBound Game Launcher", "Openbound Game Launcher\OpenBound Game Launcher.csproj", "{0040FCC4-14F5-4349-9FB2-4586FD6F7D58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBound Game Launcher", "OpenBound Game Launcher\OpenBound Game Launcher.csproj", "{0040FCC4-14F5-4349-9FB2-4586FD6F7D58}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpenBound", "OpenBound\OpenBound.csproj", "{19E4FEBE-C9F5-40B7-BC21-CDF8D2C03974}"
 EndProject
