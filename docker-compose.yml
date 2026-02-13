@@ -1,0 +1,134 @@
+version: '3.8'
+
+services:
+  # Avatar API Service
+  avatar-api:
+    build:
+      context: .
+      dockerfile: Avatar API/Dockerfile
+    image: openbound-avatar-api:latest
+    container_name: openbound-avatar-api
+    ports:
+      - "${AVATAR_API_PORT:-5000}:80"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${ASPNETCORE_ENVIRONMENT:-Production}
+      - ASPNETCORE_URLS=http://+:80
+    networks:
+      - openbound-network
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
+    depends_on:
+      - database
+    # Uncomment and configure volumes if you need persistent configuration
+    # volumes:
+    #   - ./config/avatar-api:/app/config
+
+  # Login Server Service
+  login-server:
+    build:
+      context: .
+      dockerfile: OpenBound Login Server/Dockerfile
+    image: openbound-login-server:latest
+    container_name: openbound-login-server
+    ports:
+      - "${LOGIN_SERVER_PORT:-8022}:8022"
+    networks:
+      - openbound-network
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
+    depends_on:
+      - database
+      - lobby-server
+    # Uncomment and configure volumes if you need persistent configuration
+    # volumes:
+    #   - ./config/login-server:/app/Config
+
+  # Lobby Server Service
+  lobby-server:
+    build:
+      context: .
+      dockerfile: OpenBound Lobby Server/Dockerfile
+    image: openbound-lobby-server:latest
+    container_name: openbound-lobby-server
+    ports:
+      - "${LOBBY_SERVER_PORT:-8023}:8023"
+    networks:
+      - openbound-network
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
+    depends_on:
+      - database
+    # Uncomment and configure volumes if you need persistent configuration
+    # volumes:
+    #   - ./config/lobby-server:/app/Config
+
+  # Game Server Service
+  game-server:
+    build:
+      context: .
+      dockerfile: OpenBound Game Server/Dockerfile
+    image: openbound-game-server:latest
+    container_name: openbound-game-server
+    ports:
+      - "${GAME_SERVER_PORT:-8024}:8024"
+    networks:
+      - openbound-network
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
+    depends_on:
+      - database
+      - lobby-server
+    # Uncomment and configure volumes if you need persistent configuration
+    # volumes:
+    #   - ./config/game-server:/app/Config
+
+
+  # SQL Server Database (Optional - can use external database)
+  database:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: openbound-database
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=${DB_PASSWORD:-YourStrong@Passw0rd}
+      - MSSQL_PID=${MSSQL_PID:-Developer}
+    ports:
+      - "${DATABASE_PORT:-1433}:1433"
+    volumes:
+      - mssql-data:/var/opt/mssql
+    networks:
+      - openbound-network
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "5"
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P $${SA_PASSWORD} -Q 'SELECT 1' -C || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
+networks:
+  openbound-network:
+    driver: bridge
+
+volumes:
+  mssql-data:

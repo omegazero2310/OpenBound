@@ -16,6 +16,17 @@ In the current version is MANDATORY that all servers are opened in the same orde
 
 All the necessary configuration (IP tables, public/local IPs and database address) can be edited by changing the configuration files that each application creates when are opened.
 
+<h2>🐳 Docker Deployment (Server-Side Only)</h2>
+
+All server-side components (Avatar API, Login Server, Lobby Server, and Game Server) can be deployed using Docker and Docker Compose. This provides an easy and consistent way to deploy the server infrastructure.
+
+**Quick Start:**
+```bash
+docker compose up -d
+```
+
+For detailed Docker deployment instructions, configuration options, and troubleshooting, see **[DOCKER_DEPLOYMENT.md](DOCKER_DEPLOYMENT.md)**.
+
 <h3>Configuring the Solution</h3>
 
 <h2>Avatar API</h2>
