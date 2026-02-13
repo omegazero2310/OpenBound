@@ -17,7 +17,6 @@ using Newtonsoft.Json;
 using OpenBound_Network_Object_Library.Models;
 using OpenBound_Network_Object_Library.Session;
 using PayPal.Api;
-using SharpDX.MediaFoundation;
 
 namespace Avatar_API.Controllers.Donation
 {

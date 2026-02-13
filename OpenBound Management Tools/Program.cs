@@ -55,7 +55,7 @@ namespace OpenBound_Management_Tools
 
             Thread t = new Thread(() =>
             {
-                Application.Run(new MainMenu());
+                Application.Run(new Forms.MainMenu());
             });
 
             t.IsBackground = true;

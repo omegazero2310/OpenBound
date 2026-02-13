@@ -89,7 +89,7 @@ namespace Avatar_API.Controllers
                 var stripeEvent = EventUtility.ConstructEvent(json,
                   Request.Headers["Stripe-Signature"], endpointSecret);
 
-                if (stripeEvent.Type == Events.ChargeSucceeded)
+                if (stripeEvent.Type == "charge.succeeded")
                 {
                     Charge charge = stripeEvent.Data.Object as Charge;
                     
