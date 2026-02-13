@@ -1,9 +1,45 @@
-OpenBound/Avatar Api
-OpenBound/OpenBound
-OpenBound/OpenBound Asset Tools
-OpenBound/OpenBound Management Tools
-OpenBound/WP Image Processing
+# Exclude client-side and build tools
+OpenBound/
+OpenBound Asset Tools/
+OpenBound Management Tools/
+OpenBound Patcher/
+OpenBound Game Launcher/
+WP Image Processing/
+
+# Exclude build artifacts
 **/obj/
 **/bin/
+**/Debug/
+**/Release/
+
+# Exclude version control
 **/.git/
+**/.gitignore
+**/.gitattributes
+
+# Exclude IDE files
 **/.vs/
+**/.vscode/
+**/*.user
+**/*.suo
+
+# Exclude Docker files from being copied into containers
+**/Dockerfile*
+**/docker-compose*.yml
+**/.dockerignore
+
+# Exclude documentation and license files (optional - can include if needed)
+**/*.md
+!**/README.md
+
+# Exclude config and template files
+**/*.Template.*
+**/Config/
+
+# Exclude test files (if any)
+**/*Tests/
+**/*.Tests/
+
+# Exclude unnecessary files
+**/.mgstats
+**/packages/
