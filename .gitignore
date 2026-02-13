@@ -10,6 +10,9 @@
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
+# Docker environment files (may contain sensitive data)
+.env
+
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
